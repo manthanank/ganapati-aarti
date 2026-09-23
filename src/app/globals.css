@@ -1,0 +1,987 @@
+@import url('https://fonts.googleapis.com/css2?family=Martel:wght@400;700;800&family=Noto+Serif+Devanagari:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Rozha+One&family=Yatra+One&display=swap');
+
+/* --------------------------------------------------------------------------
+   Divine Typography & Design Variables (Ganesh Chaturthi Theme)
+   -------------------------------------------------------------------------- */
+:root {
+  --primary-gold: #ffb830;
+  --primary-gold-bright: #ffd27d;
+  --primary-saffron: #ff8c00;
+  --primary-amber: #ff9f1c;
+  --primary-sindoor: #e63946;
+  --primary-sindoor-light: #ff4d5a;
+  --divine-glow: rgba(255, 184, 48, 0.45);
+  --sindoor-glow: rgba(230, 57, 70, 0.35);
+
+  --dark-bg: #0d0705;
+  --card-bg: rgba(26, 12, 7, 0.82);
+  --card-bg-hover: rgba(36, 16, 10, 0.9);
+  --glass-bg: rgba(20, 9, 5, 0.75);
+  --glass-bg-hover: rgba(32, 14, 8, 0.85);
+  --glass-border: rgba(255, 184, 48, 0.28);
+  --glass-border-hover: rgba(255, 200, 100, 0.55);
+
+  --text-white: #ffffff;
+  --text-cream: #fff3e6;
+  --text-muted: #d9c5b2;
+  --text-dim: #a6907d;
+
+  --font-body: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-devanagari: 'Rozha One', 'Yatra One', 'Noto Serif Devanagari', 'Martel', serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  font-family: var(--font-body);
+  color: var(--text-white);
+  background-color: var(--dark-bg);
+  overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   App Layout & Scenic Devotional Background
+   -------------------------------------------------------------------------- */
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.background-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  filter: brightness(0.68) contrast(1.08);
+  transform: scale(1.02);
+  transition: transform 16s ease, filter 1s ease;
+}
+
+.background-wrapper:hover .background-image {
+  transform: scale(1.05);
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 30%, rgba(20, 8, 4, 0.3) 0%, rgba(10, 4, 2, 0.85) 85%),
+              linear-gradient(to bottom, rgba(13, 7, 5, 0.75) 0%, rgba(13, 7, 5, 0.4) 30%, rgba(13, 7, 5, 0.85) 80%, rgba(13, 7, 5, 0.98) 100%);
+  pointer-events: none;
+}
+
+#particlesCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.content-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Top Navigation Bar
+   -------------------------------------------------------------------------- */
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(18, 8, 5, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.festival-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(135deg, rgba(230, 57, 70, 0.35), rgba(255, 140, 0, 0.25));
+  border: 1px solid rgba(255, 184, 48, 0.4);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ffdda1;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+.live-count {
+  font-weight: 700;
+  color: var(--primary-gold);
+}
+
+.live-label {
+  color: var(--text-muted);
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-white);
+  padding: 0.42rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+}
+
+.action-btn:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 184, 48, 0.2);
+}
+
+.bell-btn.ringing {
+  animation: ring-shake 0.5s ease-in-out;
+  border-color: var(--primary-gold);
+  background: rgba(255, 184, 48, 0.3);
+}
+
+@keyframes ring-shake {
+  0% { transform: rotate(0); }
+  20% { transform: rotate(-16deg); }
+  40% { transform: rotate(14deg); }
+  60% { transform: rotate(-10deg); }
+  80% { transform: rotate(8deg); }
+  100% { transform: rotate(0); }
+}
+
+.flower-btn:active {
+  transform: scale(0.96);
+}
+
+.icon-only-btn {
+  padding: 0.42rem 0.65rem;
+  font-size: 0.95rem;
+}
+
+.clock-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(0,0,0,0.35);
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* --------------------------------------------------------------------------
+   Hero Section
+   -------------------------------------------------------------------------- */
+.hero-section {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.shloka-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(28, 12, 6, 0.75);
+  border: 1px solid rgba(255, 184, 48, 0.3);
+  padding: 0.55rem 1.4rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.shloka-symbol {
+  font-family: var(--font-devanagari);
+  font-size: 1.25rem;
+  color: var(--primary-gold);
+  font-weight: 700;
+}
+
+.shloka-text {
+  font-family: var(--font-devanagari);
+  font-size: 0.98rem;
+  color: var(--text-cream);
+  letter-spacing: 0.02em;
+}
+
+.hero-main-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hero-om-badge {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--primary-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-main-title {
+  font-family: var(--font-devanagari);
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 10%, #ffd27d 60%, #ff9f1c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 24px rgba(255, 184, 48, 0.35);
+  line-height: 1.2;
+}
+
+.hero-subtitle-english {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--text-muted);
+}
+
+.hero-description {
+  max-width: 680px;
+  font-size: 0.94rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Aarti Selector Pill Bar
+   -------------------------------------------------------------------------- */
+.aarti-selector-container {
+  width: 100%;
+  overflow: hidden;
+  padding: 0.25rem 0;
+}
+
+.aarti-scroll-track {
+  display: flex;
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding: 0.4rem 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--glass-border) transparent;
+}
+
+.aarti-scroll-track::-webkit-scrollbar {
+  height: 4px;
+}
+.aarti-scroll-track::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 4px;
+}
+
+.aarti-pill-btn {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 0.65rem 1.1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: var(--text-white);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+  text-align: left;
+  font-family: var(--font-body);
+}
+
+.aarti-pill-btn:hover {
+  background: var(--card-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.aarti-pill-btn.active {
+  background: linear-gradient(135deg, rgba(230, 57, 70, 0.3), rgba(255, 140, 0, 0.28));
+  border-color: var(--primary-gold);
+  box-shadow: 0 0 20px rgba(255, 184, 48, 0.3);
+  transform: translateY(-2px);
+}
+
+.pill-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-gold);
+  background: rgba(255, 184, 48, 0.15);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.pill-title {
+  font-family: var(--font-devanagari);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.pill-subtitle {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Lyrics Reader Card Wrapper
+   -------------------------------------------------------------------------- */
+.lyrics-card-wrapper {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), 0 0 30px rgba(255, 184, 48, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.aarti-card-header {
+  padding: 1.5rem 1.75rem 1.25rem 1.75rem;
+  border-bottom: 1px solid rgba(255, 184, 48, 0.18);
+  background: linear-gradient(to bottom, rgba(25, 10, 5, 0.65), rgba(15, 6, 3, 0.4));
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.aarti-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.aarti-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.aarti-category-pill {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary-gold);
+  background: rgba(255, 184, 48, 0.15);
+  border: 1px solid rgba(255, 184, 48, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  margin-bottom: 0.25rem;
+}
+
+.aarti-devanagari-title {
+  font-family: var(--font-devanagari);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--primary-gold-bright);
+  text-shadow: 0 2px 14px rgba(255, 184, 48, 0.4);
+  line-height: 1.2;
+}
+
+.aarti-english-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-white);
+  letter-spacing: 0.04em;
+}
+
+.aarti-subtitle-text {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Reader Toolbar & Multi-Script Controls
+   -------------------------------------------------------------------------- */
+.reader-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.script-tabs-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.toolbar-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.script-buttons {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.script-pill {
+  padding: 0.32rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font-body);
+}
+
+.script-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-white);
+}
+
+.script-pill.active {
+  background: var(--primary-gold);
+  border-color: var(--primary-gold);
+  color: #1a0a04;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(255, 184, 48, 0.4);
+}
+
+.toolbar-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.font-size-adjuster {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.font-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-white);
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.font-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.font-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.font-scale-indicator {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  padding: 0 0.35rem;
+  min-width: 38px;
+  text-align: center;
+}
+
+.toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-white);
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+
+.toolbar-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.toolbar-btn.active {
+  background: rgba(255, 184, 48, 0.2);
+  border-color: var(--primary-gold);
+  color: var(--primary-gold);
+}
+
+.autoscroll-control-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.scroll-btn.active-pulse {
+  background: linear-gradient(135deg, rgba(230, 57, 70, 0.4), rgba(255, 140, 0, 0.4));
+  border-color: var(--primary-gold);
+  color: #fff;
+  animation: pulse-glow 1.5s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 184, 48, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(255, 184, 48, 0.7); }
+}
+
+.speed-pills {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.speed-pill {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.speed-pill.active {
+  background: var(--primary-gold);
+  color: #000;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   Search Bar
+   -------------------------------------------------------------------------- */
+.reader-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 0.55rem 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.reader-search-bar:focus-within {
+  border-color: var(--primary-gold);
+  box-shadow: 0 0 14px rgba(255, 184, 48, 0.25);
+}
+
+.search-icon {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-white);
+  font-size: 0.88rem;
+  font-family: var(--font-body);
+}
+
+.search-input::placeholder {
+  color: var(--text-dim);
+}
+
+.clear-search-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.2rem;
+}
+
+.clear-search-btn:hover {
+  color: var(--text-white);
+}
+
+/* --------------------------------------------------------------------------
+   Lyrics Scrollable Body & Stanza Cards
+   -------------------------------------------------------------------------- */
+.lyrics-scrollable-body {
+  padding: 1.5rem 1.75rem 2.5rem 1.75rem;
+  max-height: 72vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--glass-border) transparent;
+}
+
+.lyrics-scrollable-body::-webkit-scrollbar {
+  width: 6px;
+}
+.lyrics-scrollable-body::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 6px;
+}
+
+.stanzas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.stanza-card {
+  background: rgba(18, 8, 4, 0.65);
+  border: 1px solid rgba(255, 184, 48, 0.15);
+  border-radius: 14px;
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.stanza-card:hover {
+  border-color: rgba(255, 184, 48, 0.35);
+  background: rgba(24, 11, 6, 0.8);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.stanza-card.stanza-highlight {
+  border-color: var(--primary-gold);
+  background: rgba(45, 20, 10, 0.85);
+  box-shadow: 0 0 24px rgba(255, 184, 48, 0.4);
+  transform: scale(1.01);
+}
+
+.stanza-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stanza-number-badge {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #ffdda1;
+  background: rgba(255, 184, 48, 0.15);
+  border: 1px solid rgba(255, 184, 48, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+}
+
+.chime-stanza-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-muted);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-body);
+}
+
+.chime-stanza-btn:hover {
+  background: rgba(255, 184, 48, 0.2);
+  border-color: var(--primary-gold);
+  color: var(--primary-gold-bright);
+}
+
+.stanza-primary-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.stanza-devanagari-line {
+  font-family: var(--font-devanagari);
+  font-size: 1.35em;
+  font-weight: 600;
+  line-height: 1.7;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.stanza-translit-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-left: 0.25rem;
+  border-left: 2px solid rgba(255, 184, 48, 0.3);
+}
+
+.stanza-translit-line {
+  font-size: 0.9em;
+  font-style: italic;
+  color: #d6beaa;
+  line-height: 1.5;
+}
+
+.stanza-meaning-box {
+  background: rgba(10, 4, 2, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.85em;
+}
+
+.meaning-tag {
+  display: block;
+  font-weight: 700;
+  font-size: 0.8em;
+  color: var(--primary-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.meaning-hindi p {
+  color: var(--text-cream);
+  line-height: 1.55;
+}
+
+.meaning-english p {
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* --------------------------------------------------------------------------
+   Closing Jayakara Card
+   -------------------------------------------------------------------------- */
+.jayakara-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(135deg, rgba(230, 57, 70, 0.25), rgba(255, 140, 0, 0.25));
+  border: 1px solid var(--primary-gold);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  box-shadow: 0 0 30px rgba(255, 184, 48, 0.2);
+}
+
+.jayakara-om {
+  font-family: var(--font-devanagari);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-gold);
+  letter-spacing: 0.08em;
+}
+
+.jayakara-text {
+  font-family: var(--font-devanagari);
+  font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 16px rgba(255, 184, 48, 0.5);
+}
+
+.jayakara-sub {
+  font-size: 0.95rem;
+  color: #ffdda1;
+}
+
+/* --------------------------------------------------------------------------
+   Empty / No-Matches Card
+   -------------------------------------------------------------------------- */
+.no-matches-card {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  color: var(--text-muted);
+}
+
+.empty-icon {
+  font-size: 2.5rem;
+}
+
+.reset-search-btn {
+  margin-top: 0.5rem;
+  padding: 0.45rem 1rem;
+  background: var(--primary-gold);
+  border: none;
+  border-radius: 8px;
+  color: #1a0a04;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.app-footer {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.footer-highlight {
+  color: var(--primary-gold);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Screen Reader Only (SEO)
+   -------------------------------------------------------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Adaptations
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .top-bar {
+    padding: 0.75rem 1rem;
+  }
+  .content-container {
+    padding: 0 0.85rem 2.5rem 0.85rem;
+    gap: 1rem;
+  }
+  .aarti-card-header {
+    padding: 1.1rem 1rem;
+    gap: 1rem;
+  }
+  .lyrics-scrollable-body {
+    padding: 1rem 1rem 2rem 1rem;
+    max-height: 65vh;
+  }
+  .stanza-card {
+    padding: 1.1rem 1.1rem;
+  }
+  .reader-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+  .toolbar-actions-group {
+    justify-content: space-between;
+  }
+  .btn-text {
+    display: none;
+  }
+  .shloka-banner {
+    padding: 0.45rem 1rem;
+  }
+  .shloka-text {
+    font-size: 0.84rem;
+  }
+}
