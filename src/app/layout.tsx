@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ganapati-aarti-five.vercel.app';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ganapatiaarti.vercel.app';
 
 export const viewport: Viewport = {
   themeColor: '#0d0705',
@@ -211,7 +212,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

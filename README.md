@@ -2,12 +2,12 @@
 
 > A peaceful, distraction-free devotional web application for chanting and reading sacred **Ganapati Aartis and Stotras** during **Ganesh Chaturthi (गणेशोत्सव)**, featuring pure lyrics, multi-script Indic transliteration, auto-scroll chant mode, interactive temple bell sound, celebratory flower shower, and real-time live devotees presence.
 
-[![Live Application](https://img.shields.io/badge/Live-ganapati--aarti--five.vercel.app-ffb830?style=for-the-badge&logo=vercel)](https://ganapati-aarti-five.vercel.app)
+[![Live Application](https://img.shields.io/badge/Live-ganapatiaarti.vercel.app-ffb830?style=for-the-badge&logo=vercel)](https://ganapatiaarti.vercel.app)
 [![Framework](https://img.shields.io/badge/Next.js-16.3-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2-blue?style=for-the-badge&logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
-**Live Production URL:** [https://ganapati-aarti-five.vercel.app](https://ganapati-aarti-five.vercel.app)
+**Live Production URL:** [https://ganapatiaarti.vercel.app](https://ganapatiaarti.vercel.app)
 
 ---
 
@@ -100,17 +100,11 @@ The application is deployed on Vercel:
 vercel --prod
 ```
 
-### Suggested Domain Names
+### Active Production Domains
 
-- **Current Active Domain**: [https://ganapati-aarti-five.vercel.app](https://ganapati-aarti-five.vercel.app)
-- **Suggested Custom Subdomains** (on `manthanank.dev`):
-  - `https://aarti.manthanank.dev`
-  - `https://ganapati.manthanank.dev`
-  - `https://bappa.manthanank.dev`
-- **Suggested Vercel Aliases**:
-  - `ganapatiaarti.vercel.app`
-  - `bappaaarti.vercel.app`
-  - `ganesh-aarti.vercel.app`
+- **Primary Custom Vercel Domain**: [https://ganapatiaarti.vercel.app](https://ganapatiaarti.vercel.app)
+- **Alternate Domain**: [https://ganesh-aartis.vercel.app](https://ganesh-aartis.vercel.app)
+- **Default Deployment**: [https://ganapati-aarti-five.vercel.app](https://ganapati-aarti-five.vercel.app)
 
 ---
 
