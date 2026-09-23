@@ -1,6 +1,6 @@
 // Fast, zero-dependency Indic script converter using Brahmic Unicode block alignment
 
-export type SupportedScript = 'devanagari' | 'english' | 'gujarati' | 'bengali' | 'telugu';
+export type SupportedScript = 'devanagari' | 'english' | 'gujarati' | 'bengali' | 'telugu' | 'kannada';
 
 export function transliterateDevanagari(text: string, targetScript: SupportedScript): string {
   if (targetScript === 'devanagari') return text;
@@ -43,6 +43,21 @@ export function transliterateDevanagari(text: string, targetScript: SupportedScr
         if ((code >= 0x0901 && code <= 0x0963) || (code >= 0x0966 && code <= 0x096f)) {
           const tCode = code - 0x0900 + 0x0c00;
           return String.fromCharCode(tCode);
+        }
+        return c;
+      })
+      .join('');
+  }
+
+  // Kannada mapping: 0x0900 -> 0x0C80
+  if (targetScript === 'kannada') {
+    return text
+      .split('')
+      .map((c) => {
+        const code = c.charCodeAt(0);
+        if ((code >= 0x0901 && code <= 0x0963) || (code >= 0x0966 && code <= 0x096f)) {
+          const kCode = code - 0x0900 + 0x0c80;
+          return String.fromCharCode(kCode);
         }
         return c;
       })

@@ -128,6 +128,7 @@ export default function LyricsReader({ aarti, onChimeBell }: LyricsReaderProps) 
                 [
                   { id: 'devanagari', label: 'देवनागरी' },
                   { id: 'english', label: 'English' },
+                  { id: 'kannada', label: 'ಕನ್ನಡ' },
                   { id: 'gujarati', label: 'ગુજરાતી' },
                   { id: 'bengali', label: 'বাংলা' },
                   { id: 'telugu', label: 'తెలుగు' },

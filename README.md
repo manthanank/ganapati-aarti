@@ -26,9 +26,10 @@
 ## ✨ Features & User Experience
 
 - **Devoted to Pure Lyrics**: Clean, sacred, distraction-free typography for effortless reading and chanting at home and in public pandals during Ganeshotsav.
-- **5 Indic Script Formats**:
+- **6 Indic Script Formats**:
   - **देवनागरी (मराठी / हिन्दी / संस्कृत)**
   - **English (Romanized Transliteration)**
+  - **ಕನ್ನಡ (Kannada)**
   - **ગુજરાતી (Gujarati)**
   - **বাংলা (Bengali)**
   - **తెలుగు (Telugu)**

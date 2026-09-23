@@ -44,6 +44,8 @@ export const metadata: Metadata = {
     'Ganesh Aarti lyrics in Gujarati',
     'Ganesh Aarti lyrics in English',
     'Ganapati Aarti lyrics in Marathi',
+    'Ganesh Aarti lyrics in Kannada',
+    'ಕನ್ನಡ ಗಣೇಶ ಆರತಿ',
     'Samarth Ramdas Swami Aarti',
   ],
   authors: [{ name: 'Devotees of Lord Ganesha' }],
@@ -56,6 +58,7 @@ export const metadata: Metadata = {
     languages: {
       'hi-IN': siteUrl,
       'mr-IN': siteUrl,
+      'kn-IN': siteUrl,
       'en-US': siteUrl,
     },
   },
@@ -117,7 +120,7 @@ export default function RootLayout({
         url: siteUrl,
         description:
           'A sacred, distraction-free devotional lyrics app for Ganapati Aartis during Ganesh Chaturthi with multi-script support, font zoom, and auto-scroll.',
-        inLanguage: ['hi', 'mr', 'sa', 'en', 'gu', 'bn', 'te'],
+        inLanguage: ['hi', 'mr', 'sa', 'en', 'gu', 'bn', 'te', 'kn'],
         publisher: {
           '@type': 'Organization',
           name: 'Shree Ganapati Aarti Devotion',
