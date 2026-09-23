@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ganapatiaarti.vercel.app';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ganapati-aarti-five.vercel.app';
 
 export const viewport: Viewport = {
   themeColor: '#0d0705',
